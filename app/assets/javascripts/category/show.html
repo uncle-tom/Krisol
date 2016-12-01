@@ -18,11 +18,18 @@
 <div class="container-fluid catalog">
 	<div class="welcome-cat">
 		<div class="text">
-			<h1>{{resp.category.name}} {{resp}}</h1>
-			<h4>Небольшое описание категории символов на 100.</h4>
+			<h1>{{resp.category.name}}</h1>
+			<h4>{{resp.category.description}} | Небольшое описание категории символов на 100.</h4>
 		</div>
 	</div>
 	<div class="margin50"></div>
+  
+  <div ng-repeat="cat in categories">
+    <md-checkbox ng-click="includesSoft(true)">
+      {{cat.name}}
+    </md-checkbox>
+  </div>
+  
 		<nav id="ddmenu">
 	    <ul>
 	    	<li class="full-width">
@@ -31,15 +38,12 @@
           <div class="dropdown">
             <div class="dd-inner">
               <ul class="column">
-                  <li ng-repeat="size in sizes">
-                  	<md-checkbox ng-click="includesSoft(true)">
-											{{size.size}}
-						    		</md-checkbox>
-                  </li>
+                <li ng-repeat="cat in categories">
+                	<md-checkbox ng-click="#">
+										{{сat.name}}
+					    		</md-checkbox>
+                </li>
               </ul>
-              <!-- <ul class="column mayHide">
-                  <li><br /><img src="ddmenu/img1.jpg" /></li>
-              </ul> -->
             </div>
           </div>
 	      </li>
@@ -49,11 +53,11 @@
           <div class="dropdown">
             <div class="dd-inner">
               <ul class="column">
-                  <li ng-repeat="size in sizes">
-                  	<md-checkbox ng-click="includesSoft(true)">
-											{{size.size}}
-						    		</md-checkbox>
-                  </li>
+                <li ng-repeat="size in sizes">
+                	<md-checkbox ng-click="includesSoft(true)">
+										{{size.size}}
+					    		</md-checkbox>
+                </li>
               </ul>
               <!-- <ul class="column mayHide">
                   <li><br /><img src="ddmenu/img1.jpg" /></li>
@@ -67,11 +71,11 @@
           <div class="dropdown">
             <div class="dd-inner">
               <ul class="column">
-                  <li ng-repeat="color in colors">
-                  	<md-checkbox ng-click="includesSoft(true)">
-											{{color.color}}
-						    		</md-checkbox>
-                  </li>
+                <li ng-repeat="color in colors">
+                	<md-checkbox ng-click="includesSoft(true)">
+										{{color.color}}
+					    		</md-checkbox>
+                </li>
               </ul>
               <!-- <ul class="column mayHide">
                   <li><br /><img src="ddmenu/img1.jpg" /></li>
@@ -84,13 +88,13 @@
           <i class="caret"></i>
           <div class="dropdown">
             <div class="dd-inner">
-                <ul class="column">
-                    <li ng-repeat="color in colors">
-                    	<md-checkbox ng-click="includesSoft(true)">
-												{{color.color}}
-							    		</md-checkbox>
-                    </li>
-                </ul>
+              <ul class="column">
+                  <li ng-repeat="color in colors">
+                  	<md-checkbox ng-click="includesSoft(true)">
+											{{color.color}}
+						    		</md-checkbox>
+                  </li>
+              </ul>
                 <!-- <ul class="column mayHide">
                     <li><br /><img src="ddmenu/img1.jpg" /></li>
                 </ul> -->

@@ -1,4 +1,3 @@
-
 var ddmenuOptions =
 {
     menuId: "ddmenu",

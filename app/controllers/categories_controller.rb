@@ -6,7 +6,7 @@ class CategoriesController < ApplicationController
   inherit_resources
 
   def show
-    @category = Category.find_by name: params[:id]
+    @category = Category.find_by(name: params[:id]) || Category.find_by(id: params[:id])
     @products = @category.products if @category
     show! do |format|
       format.html { render }
@@ -19,6 +19,6 @@ class CategoriesController < ApplicationController
 protected
 
 	def category_params
-		params.require(:category).permit(:id, :name, :parent_id)
+		params.require(:category).permit(:id, :name, :parent_id, :description, :seotext)
 	end
 end

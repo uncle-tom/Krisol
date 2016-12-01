@@ -4,18 +4,26 @@
     <label>{{'ADMIN_CATEGORY_ADD_NAME' | translate }}</label>
     <input ng-model="category.name" type="text">
   </md-input-container>
+  <md-input-container class="md-icon-float md-block">
+    <label>Описание категории</label>
+    <input ng-model="category.description" type="text">
+  </md-input-container>
+	<md-input-container class="md-block">
+    <label>Текст для категории</label>
+    <textarea ng-model="category.seotext" rows="5" cols="5" md-select-on-focus></textarea>
+  </md-input-container>
 	
-	<md-checkbox>
+	<!-- <md-checkbox>
   	{{'ADMIN_CATEGORY_ADD_PARENT' | translate }}
-  </md-checkbox>
+  </md-checkbox> -->
 	
-	<div class="form-group select category_parent_id">
+	<!-- <div class="form-group select category_parent_id">
 	  <label class="select control-label" for="category.parent_id">
 	  {{'ADMIN_CATEGORY_ADD_SELECT_PARENT' | translate }}</label>
 	  <select class="select form-control" ng-model="category.parent_id" id="category_parent_id">
 	    <option ng-repeat="category in categories" ng-if="!category.parent_id" value="{{category.id}}">{{ category.name }}</option> 
 	 </select>
-	</div>
+	</div> -->
 
   <md-button ng-click="addCategory()" class="md-raised md-primary">{{'ADMIN_CATEGORY_BUTTON_ADD' | translate }}</md-button>
 </form>

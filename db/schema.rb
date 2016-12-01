@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160915155231) do
+ActiveRecord::Schema.define(version: 20161201133300) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "order_id"
@@ -34,8 +34,10 @@ ActiveRecord::Schema.define(version: 20160915155231) do
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.integer  "parent_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.text     "description"
+    t.text     "seotext"
   end
 
   create_table "categories_products", id: false, force: :cascade do |t|
