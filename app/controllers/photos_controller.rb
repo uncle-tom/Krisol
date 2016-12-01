@@ -16,6 +16,6 @@ class PhotosController < ApplicationController
 protected
 
   def photo_params
-    {product_id: params[:product_id], image: params[:file]}
+    {product_id: params[:product_id], category_id: params[:category_id], image: params[:file]}
   end
 end

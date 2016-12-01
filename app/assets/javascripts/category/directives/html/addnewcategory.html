@@ -12,18 +12,33 @@
     <label>Текст для категории</label>
     <textarea ng-model="category.seotext" rows="5" cols="5" md-select-on-focus></textarea>
   </md-input-container>
-	
-	<!-- <md-checkbox>
-  	{{'ADMIN_CATEGORY_ADD_PARENT' | translate }}
-  </md-checkbox> -->
-	
-	<!-- <div class="form-group select category_parent_id">
-	  <label class="select control-label" for="category.parent_id">
-	  {{'ADMIN_CATEGORY_ADD_SELECT_PARENT' | translate }}</label>
-	  <select class="select form-control" ng-model="category.parent_id" id="category_parent_id">
-	    <option ng-repeat="category in categories" ng-if="!category.parent_id" value="{{category.id}}">{{ category.name }}</option> 
-	 </select>
-	</div> -->
+  <div class="addproductphoto">
+    <div class="addphoto ">
+      <input type="file" id="file" nv-file-select="" uploader="uploader" multiple/><br/>
+      <label for="file" class="file">
+        Добавить фото
+      </label>
+
+      <div ng-repeat="item in uploader.queue" class="ng-scope">
+        <div ng-show="uploader.isHTML5" ng-thumb="{ file: item._file, height: 100 }" style="text-align: center; position:relative">
+        </div>
+        <p class="text-center" ng-click="item.remove()">Удалить</p>
+      </div>
+    </div>
+  </div>
+  <div class="productphotolist">
+    <h4 class="text-center">Фотография для категории</h4>
+    <div class="photo" ng-repeat="photo in category.photos">
+      <img ng-src="{{photo.image.middle.url}}" alt="">
+      <div class="productphotolist-photo_icon" ng-controller="productPhotosCtrl">
+        <img src="/assets/icon/mainphoto.png" alt="" 
+        ng-if="product.cover_photo_id != photo.id"
+        ng-click="set_main(product.id, photo.id)">
+        <img src="/assets/icon/trash.png" alt=""
+        ng-click="delete(photo.id)">
+      </div>
+    </div>
+  </div>
 
   <md-button ng-click="addCategory()" class="md-raised md-primary">{{'ADMIN_CATEGORY_BUTTON_ADD' | translate }}</md-button>
 </form>

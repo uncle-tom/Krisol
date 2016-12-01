@@ -16,10 +16,10 @@
 </div> -->
 <!-- Хлебные крошки -->
 <div class="container-fluid catalog">
-	<div class="welcome-cat">
+	<div class="welcome-cat" ng-style="{'background': 'url({{resp.category.cover_url}}', 'background-size':'cover'}">
 		<div class="text">
 			<h1>{{resp.category.name}}</h1>
-			<h4>{{resp.category.description}} | Небольшое описание категории символов на 100.</h4>
+			<h4>{{resp.category.description}} | {{resp}}</h4>
 		</div>
 	</div>
 	<div class="margin50"></div>
