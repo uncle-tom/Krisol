@@ -16,14 +16,14 @@
 </div> -->
 <!-- Хлебные крошки -->
 <div class="container-fluid catalog">
-	<div class="welcome-cat" ng-style="{'background': 'url({{resp.category.cover_url}}', 'background-size':'cover'}">
+	<div class="welcome-cat" ng-style="{'background':'url({{mybackground}})', 'background-size':'cover'}">
 		<div class="text">
-			<h1>{{resp.category.name}}</h1>
-			<h4>{{resp.category.description}} | {{resp}}</h4>
+			<h1>{{resp.category.name}} | {{mybackground}}</h1>
+			<h4>{{resp.category.description}}</h4>
 		</div>
 	</div>
 	<div class="margin50"></div>
-  
+  <img ng-src="{{mybackground}}" alt="">
   <div ng-repeat="cat in categories">
     <md-checkbox ng-click="includesSoft(true)">
       {{cat.name}}
@@ -38,11 +38,11 @@
           <div class="dropdown">
             <div class="dd-inner">
               <ul class="column">
-                <li ng-repeat="cat in categories">
+                <!-- <li ng-repeat="cat in categories">
                 	<md-checkbox ng-click="#">
 										{{сat.name}}
 					    		</md-checkbox>
-                </li>
+                </li> -->
               </ul>
             </div>
           </div>

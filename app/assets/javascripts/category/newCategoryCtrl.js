@@ -17,10 +17,10 @@ function addNewCategory($scope, $http, $state, $localStorage, $sessionStorage, A
       console.log($scope.category);
       $state.go('admincategory')
 
-      uploader.url = '/categories/'+$scope.category.id+'/photos';
+      uploader.url = '/categories/'+$scope.category.id+'/category_photos';
 
       $.map(uploader.queue, function(file_obj) {
-        file_obj.url = '/categories/'+$scope.category.id+'/photos';
+        file_obj.url = '/categories/'+$scope.category.id+'/category_photos';
       })
       
       uploader.onCompleteAll = function() {

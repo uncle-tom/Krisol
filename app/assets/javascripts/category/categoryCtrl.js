@@ -6,6 +6,7 @@ function categoryCtrl($scope, $http, $stateParams, $localStorage, $sessionStorag
 
   $http.get('/categories/'+$stateParams.id+'.json').success(function(data, status, headers, config){
     $scope.resp = data;
+    $scope.mybackground = $scope.resp.category_photos[0].image.url
   })
 	
 	Category.query({}, function(data){

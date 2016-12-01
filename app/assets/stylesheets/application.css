@@ -824,7 +824,7 @@ footer a:hover {
 }
 
 .catalog .welcome-cat {
-	background: url('catalog-bg.jpg');
+	/*background: url('catalog-bg.jpg');*/
 	margin-left: -15px;
  	margin-right: -15px;
 }
