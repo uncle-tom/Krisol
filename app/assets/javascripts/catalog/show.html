@@ -1,0 +1,107 @@
+<title>Каталог детских игрушек | Мама подарила!</title>
+<meta name="description" content="Каталог детских игрушек в интернет-магазине Мама подарила. Удобные фильтры помогут вам выбрать и купить нужную игрушку для вашего ребенка." />
+<div ng-include="'header/header.html'"></div>
+<!-- Хлебные крошки -->
+<div class="container-fluid breadcrumb-catalog">
+	<div class="row">
+		<div class="col-md-12">
+			<div xmlns:v="http://rdf.data-vocabulary.org/#">
+				<span typeof="v:Breadcrumb">
+				<a href="/" rel="v:url" property="v:title"> Мама подарила!</a> › </span>
+				<span typeof="v:Breadcrumb"> <a href="/catalog" rel="v:url" property="v:title">Каталог</a> </span>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Хлебные крошки -->
+<div class="container-fluid catalog">
+	<div class="row">
+		
+		<!-- Сайдбар - Категории - Фильтры -->
+		<div class="col-md-3 pull-right">
+			<div class="sidebar"  ng-controller="categoryCtrl">
+				<h4>Категории</h4>
+				<div ng-repeat="cat in categories">
+					<p><a href="/categories/{{cat.name}}">{{cat.name}}</a></p>	
+				</div>
+			</div>
+
+			<div class="sidebar">
+				<h4>Выберете стоимость</h4>
+				<input type="range" min="0" max="5000" data-ng-model="price" />
+		    <div class="row">
+		      <div class="col-md-6">
+		        <p class="pull-left">0</p>
+		      </div>
+		      <div class="col-md-6">
+		        <p class="pull-right">{{price}}</p>
+		      </div>
+		    </div>
+			</div>
+
+			<img src="assets/catalogpage-minion.png" alt="" style="transform: rotateY(180deg);">
+			
+		</div>
+		<!-- Сайдбар - Категории - Фильтры -->
+
+		<!-- Список продуктов -->
+		<div class="col-md-9">
+			<div class="col-md-12">
+				<h1>Каталог детских игрушек</h1>	
+				<filterproductincategoryandcatalog></filterproductincategoryandcatalog>
+				<div>
+					<span ng-if="colors.length > 0" >
+						Цвет: {{colors}}
+					</span>
+					<span ng-click="colors = ''">
+						<span ng-if="colors.length > 0" style="padding-right: 20px;">&#10006;</span>
+					</span>
+					<span ng-if="sizes.length > 0">
+						Размер: {{sizes}}
+					</span>
+					<span ng-click="sizes = ''">
+						<span ng-if="sizes.length > 0">&#10006;</span>
+					</span>
+				</div>
+				<md-checkbox ng-click="includesSoft(true)">
+					Мягкие игрушки
+    		</md-checkbox>
+    		<md-checkbox ng-click="includesSet(true)">
+					Игровые наборы
+    		</md-checkbox>
+    		<md-checkbox ng-click="includesFigures(true)">
+					Фигурки
+    		</md-checkbox>
+    		<md-checkbox ng-click="includesBoard(true)">
+					Настольные игры
+    		</md-checkbox>
+    		<md-checkbox ng-click="includesPazzles(true)">
+					Пазлы
+    		</md-checkbox>
+			</div>
+			
+			<div class="row2" ng-repeat="product in products | filter: setFilter | filter: softFilter | filter: figuresFilter | filter: boardFilter | filter: pazzlesFilter | filter:colors | filter:sizes | filter: minpriceFilter | orderBy:predicate:!reverse">
+				<div class="col-md-4 margin-bottom50">
+					<div class="product myfade">
+						<a href="/products/{{product.id}}">
+						<div class="product-photo">
+							<mainphotoproduct></mainphotoproduct>
+						</div>
+						<h4 class="product-name">{{product.name}}</h4>
+						<!-- <p>{{product.description | limitTo:50}}..</p> -->
+						</a>
+						<h4><span ng-hide="product.sale_price">{{product.price}} ГРН</span>
+						<span ng-if="product.sale_price">{{product.sale_price}} ГРН</span></h4>
+						<ngcart-addtocart  id="{{product.id}}" name="{{product.name}}" data="{color: product_color, size: product_size}" price="{{product.price}}" quantity="1">Купить</ngcart-addtocart>
+						<!-- <md-button  style="color: rgb(255, 255, 255); background: rgb(76, 175, 80);">Купить</md-button> -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Список продуктов -->
+
+		
+
+	</div>
+</div>
+<div ng-include="'footer/footer.html'"></div>

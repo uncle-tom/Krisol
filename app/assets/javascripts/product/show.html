@@ -1,0 +1,210 @@
+<title>{{product.name}}</title>
+<meta name="description" content="{{product.description}}" />
+
+<div class="header-buy">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-9">{{product.name}}</div>
+			<div class="col-md-3">
+				<ngcart-addtocart id="{{product.id}}" name="{{product.name}}" data="{color: product_color, size: product_size}" price="{{product.price}}" quantity="1">Купить</ngcart-addtocart>
+			</div>
+		</div>
+	</div>
+</div>
+<div ng-include="'header/header.html'"></div>
+
+<div class="container">
+	<div class="row product-page">
+		<!-- Фотки для компа -->
+		<div class="col-md-8 pc-show">
+
+			<ul class="product-thumbs">
+			  <div class="gallery" ng-controller="productCtrl as ctrl">
+          <ng-gallery images="ctrl.images" thumbs-num="11"></ng-gallery>
+        </div>
+			</ul>
+			<div class="product-images">
+			  <img 
+			  ng-src="{{product.cover_url != null ? bg = product.cover_url : bg = product.photos[0].image.url}}"  
+			  class="product-images_main"
+			  />
+			</div>
+
+			<div ng-if="product.has_popular" class="haspopularphoto-product" style="top:-8px;">
+				<span class="haspopular">Топ продаж</span>	
+			</div>
+		</div>
+		<!-- Фотки для компа -->
+		<!-- Информация о продукте -->
+		<div class="col-md-4">
+			<div class="product-page_info">
+				<div class="row">
+					<div class="col-md-12 col-xs-12">
+						<h4>{{product.name}} 
+							<br><h6 ng-controller="categoryCtrl"><i>{{resp.category.name}}</i></h6>
+							<p style="margin: 0 0 0px"><b>{{product.price}} ГРН</b></p>
+						</h4>
+					</div>
+					<div class="col-md-6 col-xs-6">
+						<!-- <h4 class="pull-right" ng-class="product.in_stock ? 'in_stock-true' : 'in_stock-false'">{{product.in_stock ? 'В наличии' : 'Нет в наличии'}}</h4> -->
+					</div>
+				</div>
+
+				<hr class="productpageline">
+
+				<pre>{{product.description}}</pre>
+
+				<div class="row">
+					<div class="col-md-3">
+						<div class="dropdown">
+						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+						    Размер
+						    <span class="caret"></span>
+						  </button>
+						  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" ng-repeat="size in product.sizes">
+						    <li><a href="">{{size}}</a></li>
+						  </ul>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="dropdown">
+						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+						    <span ng-model="product_color">{{product_color}}</span>
+						    <span class="caret"></span>
+						  </button>
+						  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+					    	<li ng-repeat="color in product.colors" ><a href="#" ng-click="product_color = {{color}}">{{color}}</a></li>
+						  </ul>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<ngcart-addtocart id="{{product.id}}" name="{{product.name}}" data="{color: product_color, size: product_size}" price="{{product.price}}" quantity="1" class="buy">Купить</ngcart-addtocart>	
+					</div>
+				</div>
+
+				<hr class="productpageline">
+
+				<div class="row">
+					<div class="col-md-6">
+						<h6><a href="">Размерная сетка</a></h6>
+					</div>
+					<div class="col-md-6"><h6 class="pull-right">Артикул: {{product.permalink}}</h6></div>
+				</div>
+
+				<hr class="productpageline">
+
+				<div class="breadcrumb-product" xmlns:v="http://rdf.data-vocabulary.org/#">
+					<span typeof="v:Breadcrumb">
+						<h6><a href="/" rel="v:url" property="v:title"> KRISOL</a> › </span>
+						<span ng-controller="categoryCtrl" typeof="v:Breadcrumb"> <a href="/product/{{product.id}}" rel="v:url" property="v:title">{{resp.category.name}}</a> › </span>
+						<span typeof="v:Breadcrumb"> <a href="/product/{{product.id}}" rel="v:url" property="v:title">{{product.name}}</a> </h6>
+					</span>
+				</div>
+
+				<hr class="productpageline">
+				
+			</div>
+		</div>
+		<!-- Информация о продукте -->
+		<!-- Для мобилки -->
+		<div class="col-md-7 mobile-show">
+			<ks-swiper-container swiper="swiper" initial-slide="0" loop="true"  pagination-is-active="true" slides-per-view="1" space-between="5" pagination-clickable="false" autoplay="42500"> 
+			  <ks-swiper-slide class="swiper-slide" ng-repeat="img in product.photos">
+			    <img src="{{img.image.url}}" alt="">
+			  </ks-swiper-slide>
+			</ks-swiper-container>
+			<br><md-input-container>
+        <label>Размер</label>
+        <md-select ng-model="product_size">
+          <md-option ng-repeat="size in product.size" value="{{size}}">
+            {{size}}
+          </md-option>
+        </md-select>
+      </md-input-container>
+      <md-input-container>
+        <label>Цвет</label>
+        <md-select ng-model="product_color">
+          <md-option ng-repeat="color in product.color" value="{{color}}">
+            {{color}}
+          </md-option>
+        </md-select>
+      </md-input-container>
+      <br><ngcart-addtocart class="buy-button_mobile" id="{{product.name}}" name="{{product.name}}" data="{color: product_color, size: product_size}" price="{{product.price}}" quantity="1">Купить</ngcart-addtocart>
+		</div>
+		<!-- Для мобилки -->
+	</div>
+</div>
+
+<div class="container wow fadeIn" >
+	<div class="col-md-12">
+	<md-content>
+    <md-tabs md-dynamic-height md-border-bottom>
+      <md-tab label="Новинки">
+        <md-content class="md-padding">
+          <div class="row">
+						<div ng-repeat="product in products | orderBy:product.id:reverse | limitTo:3">
+							<div class="col-md-4">
+								<div class="product">
+									<a href="/product/{{product.id}}">
+									<div class="product-photo">
+										<mainphotoproduct></mainphotoproduct>
+									</div>
+									<h4>{{product.name}}</h4>
+									</a>
+									<h4>{{product.price}} ГРН</h4>
+									<ngcart-addtocart  id="{{product.id}}" name="{{product.name}}" data="{color: product_color, size: product_size}" price="{{product.price}}" quantity="1">Купить</ngcart-addtocart>
+								</div>
+							</div>
+						</div>
+					</div>
+        </md-content>
+      </md-tab>
+      <md-tab label="Популярное">
+        <md-content class="md-padding">
+          <div class="row">
+						<div ng-repeat="product in products | limitTo:3 | filter: haspopularFilter">
+							<div class="col-md-4">
+								<div class="product">
+									<a href="/product/{{product.id}}">
+									<div class="product-photo">
+										<mainphotoproduct></mainphotoproduct>
+									</div>
+									<h4>{{product.name}}</h4>
+									</a>
+									<h4>{{product.price}} ГРН</h4>
+									<ngcart-addtocart  id="{{product.id}}" name="{{product.name}}" data="{color: product_color, size: product_size}" price="{{product.price}}" quantity="1">Купить</ngcart-addtocart>
+								</div>
+							</div>
+						</div>
+					</div>
+        </md-content>
+      </md-tab>
+      <md-tab label="Скидки">
+        <md-content class="md-padding">
+          <div class="row">
+						<div ng-repeat="product in products | limitTo:3">
+							<div class="col-md-4">
+								<div class="product">
+									<a href="/product/{{product.id}}">
+									<div class="product-photo">
+										<mainphotoproduct></mainphotoproduct>
+									</div>
+									<h4>{{product.name}}</h4>
+									</a>
+									<h4>{{product.price}} ГРН</h4>
+									<ngcart-addtocart  id="{{product.id}}" name="{{product.name}}" data="{color: product_color, size: product_size}" price="{{product.price}}" quantity="1">Купить</ngcart-addtocart>
+								</div>
+							</div>
+						</div>
+					</div>
+        </md-content>
+      </md-tab>
+    </md-tabs>
+  </md-content>
+  </div>
+</div>
+<div ng-include="'footer/footer.html'"></div>
+
+<script type="text/javascript">
+	new WOW().init();
+</script>

@@ -1,0 +1,158 @@
+<title>Корзина | Мама подарила!</title>
+<meta name="description" content="Корзина. Страница для оформления заказа в интернет-магазине Мама подарила." />
+
+<div ng-include="'header/header.html'"></div>
+
+<div class="container a">
+<md-card ng-init="step3.disabled = true; step2.disabled = true; step4.disabled = true; selected = 0">
+<md-toolbar>
+  <div class="md-toolbar-tools">
+    <h2>
+      <span>Оформление заказа</span>
+    </h2>
+  </div>
+</md-toolbar>
+  <md-steppers md-dynamic-height md-selected="selected" md-stretch-steppers="always">
+
+    <md-step label="Ваша корзина" md-complete="step1.completed" ng-disabled="step1.disabled">
+      <md-content>
+        <ngcart-cart></ngcart-cart>
+      </md-content>
+      <md-step-actions layout="row">
+        <div flex layout="row" layout-align="end top">
+          <a href="/catalog"><md-button class="md-warn">Назад</md-button></a>
+          <md-button class="md-primary md-raised" ng-click="selected = 1; step1.completed = true; step2.disabled = false;" ng-disabled="ngCart.getTotalItems() === 0">Далее</md-button>
+          <h2>{{$scope.ngCart.getTotalItems()}}</h2>
+        </div>
+      </md-step-actions>
+    </md-step>
+
+    <md-step label="Оформление заказа" md-complete="step2.completed" ng-disabled="step2.disabled">
+      <form name="newinvoice" novalidate="novalidate">
+        <md-content>
+          <div class="col-md-12">
+            <h3>Контактные данные</h3><br>
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Имя</label>
+              <input type="text" name="user_name" ng-model="user.name" require>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Ваш номер телефона</label>
+              <input type="number" name="user_phone" ng-model="user.phone" require>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Укажите ваш адрес электронной почты</label>
+              <input ng-model="user.email" type="email" require>
+            </md-input-container>
+            
+            
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Город</label>
+              <input ng-model="user.city">
+            </md-input-container>
+            <div class="row">
+              <div class="col-md-6">
+                <h3>Доставка</h3>
+                <md-radio-group class="md-primary" ng-model="user.delivery_type">
+                  <md-radio-button value="Самовывоз" checked> Самовывоз </md-radio-button>
+                  <md-radio-button value="Новая почта"> Новая почта </md-radio-button>
+                  <md-radio-button value="Курьером по Киеву"> Курьером по Киеву </md-radio-button>
+                </md-radio-group>
+              </div>
+              <div class="col-md-6">
+                <h3>Оплата</h3>
+                <md-radio-group ng-model="user.payment_type">
+                  <md-radio-button value="Оплата при получении" checked> Оплата при получении </md-radio-button>
+                  <md-radio-button value="Оплата картой"> Оплата картой Visa или MasterCard </md-radio-button>
+                </md-radio-group>
+              </div>
+            </div>
+          </div>
+        </md-content>
+        <md-step-actions layout="row">
+          <div flex layout="row" layout-align="end top">
+            <md-button class="md-warn" ng-click="selected = 0">Назад</md-button>
+            <md-button type="submit" class="md-raised md-primary" ng-click="selected = 2; step2.completed = true; step3.disabled = false;">Далее</md-button>
+          </div>
+        </md-step-actions>
+      </form>
+    </md-step>
+    <md-step label="Проверка" md-complete="step3.completed" ng-disabled="step3.disabled">
+      <md-content>
+        <div class="col-md-12 col-xs-12 adminproduct_position">
+          <h2>Проверка данных:</h2>
+          <p>Убедитесь, что все поля заполненны верно.</p>
+          <ngcart-cart></ngcart-cart>
+          <div class="mobile-show">
+            <div class="row">
+              <div class="col-xs-6 color-grey"><p>Имя</p></div>
+              <div class="col-xs-6"><p>{{user.name}}</p></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 color-grey"><p>Телефон</p></div>
+              <div class="col-xs-6"><p>{{user.phone}}</p></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 color-grey"><p>Email</p></div>
+              <div class="col-xs-6"><p>{{user.email}}</p></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 color-grey"><p>Город</p></div>
+              <div class="col-xs-6"><p>{{user.city}}</p></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 color-grey"><p>Адрес</p></div>
+              <div class="col-xs-6"><p>{{user.address}}</p></div>
+            </div>
+          </div>
+          <table class="pc-show table table-striped ng-show">
+            <thead>
+              <tr>
+                <th>Имя</th>
+                <th>Телефон</th>
+                <th>Email</th>
+                <th>Город</th>
+                <th>Адрес</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="font-size: medium;">
+                <td>{{user.name}}</td>
+                <td>{{user.phone}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.city}}</td>
+                <td>{{user.address}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>Способ оплаты: {{user.payment_type}}</p>
+          <p>Доставка: {{user.delivery_type}}</p>
+          <h3>Заметки:</h3>
+          <p>{{user.notes}}</p>
+          </div>
+        </md-content>
+        <md-step-actions layout="row">
+          <div flex layout="row" layout-align="end top">
+            <md-button class="md-warn" ng-click="selected = 1">Назад</md-button>
+            <md-button type="submit" class="md-raised md-primary" ng-click="selected = 3; step3.completed = true; step4.disabled = false; updateOrder(ngCart.getCart())">Оформить <span class="pc-show">заказ</span></md-button>
+          </div>
+        </md-step-actions>
+    </md-step>
+    <md-step label="Спасибо" md-complete="step4.completed" ng-disabled="step4.disabled">
+      <md-content>
+        <div class="col-md-12">
+          <h2>
+            Спасибо! Заказ успешно оформлен.
+          </h2>
+        </div>
+      </md-content>
+      <md-step-actions layout="row">
+        <div flex layout="row" layout-align="end top">
+          <a href="/catalog"><md-button class="md-warn">Продолжить покупки</md-button></a>
+        </div>
+      </md-step-actions>
+    </md-step>
+  </md-steppers>
+</md-card>
+</div>
+<div ng-include="'footer/footer.html'"></div>

@@ -1,0 +1,147 @@
+<div class="row addproduct display" ng-controller="adminCtrl">
+  <div class="row">
+    <form name="newproduct" uploader="uploader" class="simple_form form-horizontal" novalidate="novalidate" id="new-product" accept-charset="UTF-8">
+      
+      <div class="col-md-4 col-xs-12 admin-sidebar_right_position">
+        <div class="admin-sidebar_right">
+          <div class="addproduct margin0">
+            <md-checkbox ng-model="product.has_popular">
+              {{'ADMIN_PRODUCT_ADD_POPULAT' | translate }}
+            </md-checkbox>
+
+            <md-checkbox ng-model="product.in_stock">
+              {{'ADMIN_PRODUCT_ADD_STOCK' | translate }}
+            </md-checkbox>
+          </div>
+        </div>
+        <adminphoto></adminphoto>
+      </div>
+
+      <div class="col-md-8">
+        <h2>{{'ADMIN_PRODUCT_ADD_TITLE' | translate }}</h2></br>
+        <md-input-container class="md-icon-float md-block">
+          <label>{{'ADMIN_PRODUCT_ADD_URL' | translate }}</label>
+          <input ng-model="product.permalink" type="text">
+        </md-input-container>
+
+        <md-input-container class="md-icon-float md-block">
+          <label>{{'ADMIN_PRODUCT_ADD_NAME' | translate }}</label>
+          <input ng-model="product.name" type="text">
+        </md-input-container>
+
+        <md-input-container class="md-block">
+          <label>{{'ADMIN_PRODUCT_ADD_PRICE' | translate }}</label>
+          <input type="text" step="any" ng-model="product.price"/>
+        </md-input-container>
+
+        <md-checkbox ng-model="product.has_sale">
+         {{'ADMIN_PRODUCT_ADD_HAS_SALE' | translate }}
+        </md-checkbox>
+
+        <div class="sale_price" ng-if="product.has_sale">
+        <md-input-container class="md-block">
+          <label>{{'ADMIN_PRODUCT_ADD_SALE' | translate }}</label>
+          <input type="number" step="any" ng-model="product.sale_price"/>
+        </md-input-container>
+        </div>
+        <div>
+        </div>
+
+        <div>
+        <br>
+          <div class="row admin-sizes-setka-color">
+            <div class="col-md-6">
+              <md-input-container>
+                <label>{{'ADMIN_PRODUCT_ADD_SIZES' | translate }}</label>
+                <md-select ng-model="product.sizes" multiple>
+                  <md-optgroup label="Размеры">
+                     <md-option ng-repeat="size in sizes" value="{{size.size}}">
+                      {{size.size}}
+                    </md-option>
+                  </md-optgroup>
+                </md-select>
+              </md-input-container>
+            </div>
+            <div class="col-md-6">
+              <md-input-container>
+                <label>{{'ADMIN_PRODUCT_ADD_COLOR' | translate }}</label>
+                <md-select ng-model="product.colors" multiple>
+                  <md-optgroup label="Цвета">
+                     <md-option ng-repeat="color in colors" value="{{color.color}}" ng-selected="exists_color(color.color)" ng-click="toggle_color(color.color)">
+                      <span >{{color.color}}</span>
+                    </md-option>
+                  </md-optgroup>
+                </md-select>
+              </md-input-container>
+            </div>
+          </div>
+        </div>
+
+        <md-input-container class="md-block">
+          <label>{{'ADMIN_PRODUCT_ADD_DESCRIPTION' | translate }}</label>
+          <textarea ng-model="product.description" rows="5" cols="5" md-select-on-focus></textarea>
+        </md-input-container>
+
+        <md-input-container class="md-block">
+          <label>{{'ADMIN_PRODUCT_ADD_FULL_DESCRIPTION' | translate }}</label>
+          <textarea ng-model="product.full_description" rows="5" cols="5" md-select-on-focus></textarea>
+        </md-input-container>
+
+        <md-input-container class="md-icon-float md-block">
+          <label>{{'ADMIN_PRODUCT_ADD_URL_VIDEO' | translate }}</label>
+          <input ng-model="product.url_video" type="text">
+        </md-input-container>
+
+        <md-input-container class="md-block">
+          <label>{{'ADMIN_PRODUCT_ADD_COMPLECT' | translate }}</label>
+          <textarea ng-model="product.complect" rows="5" cols="5" md-select-on-focus></textarea>
+        </md-input-container>
+
+        <md-input-container class="md-block">
+          <label>{{'ADMIN_PRODUCT_ADD_RAZMER' | translate }}</label>
+          <textarea ng-model="product.razmer" rows="5" cols="5" md-select-on-focus></textarea>
+        </md-input-container>
+
+        <md-input-container class="md-block">
+          <label>{{'ADMIN_PRODUCT_ADD_AGE' | translate }}</label>
+          <textarea ng-model="product.age" rows="5" cols="5" md-select-on-focus></textarea>
+        </md-input-container>
+
+        <md-checkbox ng-model="product.is_soft">
+          Мягкая игрушка
+        </md-checkbox>
+
+        <md-checkbox ng-model="product.is_set">
+          Игровой набор
+        </md-checkbox>
+
+        <md-checkbox ng-model="product.is_figures">
+          Фигурки
+        </md-checkbox>
+
+        <md-checkbox ng-model="product.is_board">
+          Настольная игра
+        </md-checkbox>
+
+        <md-checkbox ng-model="product.is_puzzles">
+          Пазл
+        </md-checkbox>
+
+        <div ng-controller="categoryCtrl">
+          <legend class="demo-legend">{{'ADMIN_PRODUCT_ADD_CHOOSE_CATEGORY' | translate }}</legend>
+          <div class="row">
+            <div ng-repeat="category in categories">
+              <div class="col-md-4">
+                <md-checkbox ng-checked="exists_cat(category.id)" ng-click="toggle_cat(category.id)">
+                  {{ category.name }}
+                </md-checkbox>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <md-button ng-click="addProduct()" class="md-raised md-primary">{{'ADMIN_PRODUCT_BUTTON_ADD' | translate }}</md-button>
+      </div>
+    </form>
+  </div>
+</div>

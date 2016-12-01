@@ -1,0 +1,17 @@
+<p class="color-grey">Отфильтровать по: 
+	<span ng-click="predicate = 'created_at'; reverse=!reverse;"> <span ng-class="{'active-sort' : predicate === 'created_at' }">
+		Дате 
+	</span>
+		<span 
+			ng-if="predicate === 'created_at'" 
+			ng-class="reverse ? 'glyphicon glyphicon-chevron-down' : 'glyphicon glyphicon-chevron-up' "
+			>
+		</span>
+	</span> | 
+	<span ng-click="predicate = 'price'; reverse=!reverse"><span ng-class="{'active-sort' : predicate === 'price' }">Цене </span>
+		<span 
+			ng-if="predicate === 'price'" 
+			ng-class="reverse ? 'glyphicon glyphicon-chevron-down' : 'glyphicon glyphicon-chevron-up' ">
+		</span>
+	</span>
+</p>

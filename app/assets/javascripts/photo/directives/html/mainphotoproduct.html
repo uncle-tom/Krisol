@@ -1,0 +1,15 @@
+<div ng-if="product.photos.length > 0" class="background-photo animate-show"
+	ng-init="bg = product.photos[0].image.url" 
+	ng-style="{ 'background': 'url(' + bg + ') 0% 0% / contain no-repeat' }">
+	<div ng-if="product.has_popular" class="haspopularphoto">
+		<span class="haspopular">Топ продаж</span>
+	</div>
+	<div ng-if="product.has_sale" class="salephoto">
+		<span class="sale">Акция</span>
+	</div>
+</div>
+
+<div ng-if="product.photos.length === 0" class="background-photo"
+	ng-init="bg = product.photos[0].image.url" 
+	ng-style="{ 'background-image': 'url(' + bg + ')' }"> 
+</div>

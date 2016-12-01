@@ -1,0 +1,151 @@
+<title>Krisol</title>
+<meta name="description" content="" />
+
+<div ng-include="'header/header.html'"></div>
+<div class="welcome">
+	<div class="welcome-text">
+		<h1>Интернет-магазин <br>"KRISOL"</h1>	
+		<br><h4>Лучший выбор женской одежды и аксессуаров!</h4>
+		<br><a href="/catalog"><md-button class="welcome-text_button" style="color: rgb(255, 255, 255); background: rgb(76, 175, 80);">Посмотреть каталог</md-button></a>
+	</div>
+</div>
+
+<div class="margin50"></div>
+<div class="container-fluid" >
+	<aside id="aside1" class="col-md-2 col-md-offset-1">
+	<div class="mainsidebar">
+	  <div>
+	  	<div ng-repeat="cat in categories">
+				<li><a href="/categories/{{cat.id}}" style="color: black;">{{cat.name}}</a></li>	  	
+			</div>
+	  	<!-- <li><a href="/categories/1" style="color: black;">Блузы, рубашки</a></li>
+			<li><a href="" style="color: black;">Болеро, кардиган</a></li>
+			<li><a href="" style="color: black;">Брюки</a></li>
+			<li><a href="" style="color: black;">Джинсы</a></li>
+			<li><a href="" style="color: black;">Комбинезоны</a></li>
+			<li><a href="" style="color: black;">Костюмы</a></li>
+			<li><a href="" style="color: black;">Кофты, свитера</a></li>
+			<li><a href="" style="color: black;">Куртки</a></li>
+			<li><a href="" style="color: black;">Туники</a></li>
+			<li><a href="" style="color: black;">Платья</a></li>
+			<li><a href="" style="color: black;">Пиджаки, жилетки</a></li>
+			<li><a href="" style="color: black;">Пальто</a></li> -->
+	  <div style="background: black; color: white;
+	    height: 50px;
+	    text-align: center;
+	    position: relative;
+	    line-height: 50px;">Новая коллекция</div>
+		  <div class="sidebar-footer">
+		  	<li><a href="" style="color: black;">Контакты</a></li>
+				<li><a href="" style="color: black;">Доставка</a></li>
+				<li><a href="" style="color: black;">Оплата</a></li>
+				<li><a href="" style="color: black;">Акции</a></li>
+				<li><a href="" style="color: black;">Новости</a></li>
+			</div>
+		</div>
+	</div>
+	</aside>
+	<div class="pull-right col-md-9">
+		<div ng-repeat="product in products">
+			<div class="col-md-4">
+				<div class="product-photo">
+					<mainphotoproduct></mainphotoproduct>
+				</div>
+				<h4 class="text-center"><a href="/products/{{product.id}}">{{product.name}}</a></h4>
+				<h4 class="text-center">{{product.price}} ГРН</h4>
+				<button class="mainpage_buybutton">Купить сейчас</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="margin50"></div>
+<div class="container-fluid">
+	<div class="pull-right col-md-9">
+		<img src="/assets/preview.jpg" alt="" style="width:100%;">
+	</div>
+</div>
+<div class="margin50"></div>
+
+<!-- <div class="container">
+	<div class="row ourplus">
+		<div class="col-md-8 col-md-offset-2 col-xs-12">			
+			<p>"Мама Подарила!"" - это интернет-магазин, которому вы сможете доверять. Мы стараемся улучшить сервис в онлайн покупках в Украине, поэтому оптимизируем каждый элемент работы.  </p>
+			
+			<br><p>В нашем интернет-магазине вы можете купить детские игрушки по доступной цене. Недорогие, но качественные игрушки - это один из главных наших принципов. Надеемся, вы получите удовольствие от покупки игрушек в нашем интернет-магазине.</p>
+		</div>
+	</div>
+</div>
+<section id="coolone" class="wow fadeIn">
+	<div class="background-color">
+		<div class="container">
+			<h1>"Мама подарила!" - интернет-магазин детских игрушек</h1>
+			<hr></hr>
+			<p>Купить детские игрушки недорого вполне реально!</p>
+		</div>
+	</div>
+</section>
+
+<div class="container mainpage_categories">
+	<h2 class="text-center">Купить игрушки из мультфильмов</h2>
+	<h4 class="text-center">У нас вы можете заказать недорогие игрушки из любимых мультфильмов</h4>
+	<div class="row">
+		<a href="#"><div class="col-md-4">
+			<div class="mainpage_category">
+				<img src="assets/mainpage-paw.jpg" alt="">
+				<div class="mainpage_category-title">Щенячий патруль</div>
+				<div class="mainpage_category-description">Игровые наборы, мягкие игрушки, гаражи</div>
+			</div>
+		</div></a>
+		<a href="#"><div class="col-md-4">
+			<div class="mainpage_category">
+				<img src="assets/mainpage-vspish.jpg" alt="">
+				<div class="mainpage_category-title">Вспыш и чудо-машинки</div>
+				<div class="mainpage_category-description">Игрушечные машинки, автотреки, гаражи</div>
+			</div>
+		</div></a>
+		<a href="#"><div class="col-md-4">
+			<div class="mainpage_category">
+				<img src="assets/mainpage-secretlife.jpg" alt="">
+				<div class="mainpage_category-title">Тайная жизнь домашних животных</div>
+				<div class="mainpage_category-description">Мягкие игрушки, фигурки героев</div>
+			</div>
+		</div></a>
+	</div>
+	<button type="button" class="button-more center-block"><a href="/catalog" target="_blank">Перейти в каталог</a></button>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<img src="https://allo.google.com/images/section/header/expression.gif" alt="" style="width: 80px;">
+			<h3>Подарите детям радость.</h3>
+		</div>
+	</div>
+</div>
+
+<div class="margin50"></div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="mainpage_sale-bg">
+				<div>
+					<img src="assets/mainpage-sale-paw.png" alt="">
+				</div>
+			</div>
+			<div class="mainpage_sale-description">
+				<div class="mainpage_sale-description-title">Купить игрушки недорого по акционным ценам</div>
+				<div class="mainpage_sale-description-desc">У нас для вас приготовлена страница с акционными товарами. Успейти купить нужную игрушку по низкой цене!</div>
+				<a href="/catalog"><md-button class="welcome-text_button" style="color: rgb(255, 255, 255); background: rgb(76, 175, 80);">Посмотреть акции</md-button></a>
+			</div>
+		</div>
+	</div>
+</div> -->
+
+ 
+
+<div ng-include="'footer/footer.html'"></div>
+
+<script type="text/javascript">
+	new WOW().init();
+</script>

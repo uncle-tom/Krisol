@@ -1,0 +1,108 @@
+<nav class="header" ng-controller="headerCtrl">
+	<div class="container">
+		<div class="row">
+			<div class="brand pull-left"><li><a href="/"><img src="/assets/krisol-logo.png" alt=""></a></li>
+			</div>
+			<div class="togglemenu pull-right">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        	<span class="sr-only">Toggle navigation</span>
+        	<span class="icon-bar"></span>
+        	<span class="icon-bar"></span>
+        	<span class="icon-bar"></span>
+      	</button>
+			</div>
+			<div class="header-right navigation pull-right">
+				<ul class="collapse navbar-collapse navigation" id="bs-example-navbar-collapse-1">
+				<!-- МОБИЛЬНЫЙ -->
+				<div class="mobile-show">
+					<div class="row">
+						<div class="col-xs-3">
+							<img src="/assets/icon/search.png" alt="">
+						</div>
+						<div class="col-xs-9">
+							<h2><a href="">Каталог</a></h2>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-3">
+							<img src="/assets/icon/locating.png" alt="">
+						</div>
+						<div class="col-xs-9">
+							<h2><a href="">Контакты</a></h2>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-3">
+							<img src="/assets/icon/search.png" alt="">
+						</div>
+						<div class="col-xs-9">
+							<h2><a href="">Акции</a></h2>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-3">
+							<img src="/assets/icon/e-commerce-like-heart.png" alt="">
+						</div>
+						<div class="col-xs-9">
+							<h2><a href="">Доставка</a></h2>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-3">
+							<img src="/assets/icon/locating.png" alt="">
+						</div>
+						<div class="col-xs-9">
+							<h2><a href="">Оплата</a></h2>	
+						</div>
+					</div>
+				</div>
+				<!-- Мобильный END -->
+
+				<div class="pc-show">
+					<div id="clothesdrop">
+						<li id="clothesheader">
+							<a href="">Одежда</a>
+						</li>
+						<div id="clothesheaderopen" class="container">
+							<div class="row">
+								<div class="col-md-3">
+									<img src="https://shopit-dunebuggysrl.netdna-ssl.com/shop/media/catalog/category/woman.jpg" alt="">
+								</div>
+								<div class="col-md-9">
+									<h2>Список категорий</h2>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="accdrop">
+						<li id="accheader">
+							<a href="">Аксессуары</a>
+						</li>
+						<div id="accheaderopen" class="container">
+							<div class="row">
+								<div class="col-md-3">
+									<img src="https://shopit-dunebuggysrl.netdna-ssl.com/shop/media/catalog/category/woman.jpg" alt="">
+								</div>
+								<div class="col-md-9">
+									<h2>Аксессуары</h2>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<li> | </li>
+					<span class="icon"><img src="/assets/icon/search.png" alt=""></span>
+					<span class="icon"><img src="/assets/icon/locating.png" alt=""></span>
+					<span class="icon"><img src="/assets/icon/e-commerce-like-heart.png" alt=""></span>
+					<!-- <li ng-class="{ active: isActive('/cart')}"><a href="/cart">Корзина</a></li> -->
+					<span><a href="/cart"><ngcart-summary></ngcart-summary></a></span>
+					
+				</div>
+				</ul>
+			</div>
+		</div>
+		
+		
+	</div>
+	
+</nav>

@@ -1,0 +1,4 @@
+<img src="assets/icon/cart.png" alt="" style="margin-bottom: -10px; margin-top:-15px">
+<span style="font-style: italic;">{{ ngCart.getTotalItems() }}
+<ng-pluralize count="ngCart.getTotalItems()" when="{1: 'товар', 'other':'товара'}"></ng-pluralize></span>
+<span style="padding-left: 15px; color:#f37f00; font-weight: bold">{{ ngCart.totalCost() }} &#8381;</span>

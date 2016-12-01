@@ -1,0 +1,118 @@
+<title>{{resp.category.name}}| KRISOL</title>
+<meta name="description" content="" />
+
+<div ng-include="'header/header.html'"></div>
+<!-- Хлебные крошки -->
+<!-- <div class="container-fluid breadcrumb-catalog">
+	<div class="row">
+		<div class="col-md-12">
+			<div xmlns:v="http://rdf.data-vocabulary.org/#">
+				<span typeof="v:Breadcrumb">
+				<a href="/" rel="v:url" property="v:title"> KRISOL</a> › </span>
+				<span typeof="v:Breadcrumb"> <a href="/categories/{{resp.category.name}}" rel="v:url" property="v:title">{{resp.category.name}}</a> </span>
+			</div>
+		</div>
+	</div>
+</div> -->
+<!-- Хлебные крошки -->
+<div class="container-fluid catalog">
+	<div class="welcome-cat">
+		<div class="text">
+			<h1>{{resp.category.name}} {{resp}}</h1>
+			<h4>Небольшое описание категории символов на 100.</h4>
+		</div>
+	</div>
+	<div class="margin50"></div>
+		<nav id="ddmenu">
+	    <ul>
+	    	<li class="full-width">
+          <span class="top-heading">Категории</span>
+          <i class="caret"></i>
+          <div class="dropdown">
+            <div class="dd-inner">
+              <ul class="column">
+                  <li ng-repeat="size in sizes">
+                  	<md-checkbox ng-click="includesSoft(true)">
+											{{size.size}}
+						    		</md-checkbox>
+                  </li>
+              </ul>
+              <!-- <ul class="column mayHide">
+                  <li><br /><img src="ddmenu/img1.jpg" /></li>
+              </ul> -->
+            </div>
+          </div>
+	      </li>
+	      <li class="full-width">
+          <span class="top-heading">Размеры</span>
+          <i class="caret"></i>
+          <div class="dropdown">
+            <div class="dd-inner">
+              <ul class="column">
+                  <li ng-repeat="size in sizes">
+                  	<md-checkbox ng-click="includesSoft(true)">
+											{{size.size}}
+						    		</md-checkbox>
+                  </li>
+              </ul>
+              <!-- <ul class="column mayHide">
+                  <li><br /><img src="ddmenu/img1.jpg" /></li>
+              </ul> -->
+            </div>
+          </div>
+	      </li>
+	      <li class="full-width">
+          <span class="top-heading">Цвета</span>
+          <i class="caret"></i>
+          <div class="dropdown">
+            <div class="dd-inner">
+              <ul class="column">
+                  <li ng-repeat="color in colors">
+                  	<md-checkbox ng-click="includesSoft(true)">
+											{{color.color}}
+						    		</md-checkbox>
+                  </li>
+              </ul>
+              <!-- <ul class="column mayHide">
+                  <li><br /><img src="ddmenu/img1.jpg" /></li>
+              </ul> -->
+            </div>
+          </div>
+	      </li>
+	      <li class="full-width">
+          <span class="top-heading">Сезонность</span>
+          <i class="caret"></i>
+          <div class="dropdown">
+            <div class="dd-inner">
+                <ul class="column">
+                    <li ng-repeat="color in colors">
+                    	<md-checkbox ng-click="includesSoft(true)">
+												{{color.color}}
+							    		</md-checkbox>
+                    </li>
+                </ul>
+                <!-- <ul class="column mayHide">
+                    <li><br /><img src="ddmenu/img1.jpg" /></li>
+                </ul> -->
+            </div>
+          </div>
+	      </li>
+	    </ul>
+	  </nav>
+		
+	<div class="margin50"></div>
+	<div class="container">
+		<div class="col-md-12">
+			<div ng-repeat="product in resp.products">
+				<div class="col-md-4">
+					<div class="product">
+						<mainphotoproduct></mainphotoproduct>
+						<h4 class="text-center">{{product.name}}</h4>
+						<h4 class="text-center">{{product.price}} ГРН</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div ng-include="'footer/footer.html'"></div>

@@ -1,0 +1,35 @@
+{
+  "name": "angular-sticky-box",
+  "authors": [
+    ""
+  ],
+  "description": "",
+  "main": [
+    "dist/angular-sticky-box.js",
+    "dist/angular-sticky-box.css"
+  ],
+  "license": "MIT",
+  "private": false,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "angular": "~1.2.26",
+    "angular-sanitize": "~1.2.26",
+    "angular-mocks": "~1.2.26"
+  },
+  "homepage": "https://github.com/pcassis/angular-sticky-box",
+  "_release": "8a71261096",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "8a71261096466500eda4fad9e3c610f22a048ddf"
+  },
+  "_source": "https://github.com/pcassis/angular-sticky-box.git",
+  "_target": "*",
+  "_originalSource": "angular-sticky-box"
+}
